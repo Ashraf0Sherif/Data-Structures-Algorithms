@@ -38,6 +38,10 @@ private:
     NOT_FOUND(t d){
         cout<<"ELEMENT "<<d<<" NOT FOUND\n";
     }
+    void first_element(t d){
+        node*tmp=new node;
+        head=tmp;cur=tmp;tmp->next=head;tmp->prev=head;head->data=d;
+    }
 public:
     Linkedlist(){to_beginning();}
     bool empty(){
@@ -45,7 +49,8 @@ public:
     }
     void push_back(t d){
         node*tmp=new node;
-        if(head==NULL){head=tmp;cur=tmp;tmp->next=head;tmp->prev=head;head->data=d;}
+        if(head==NULL)
+            first_element(d);
         else{
             tmp->data=d;
             cur->next=tmp;
@@ -58,7 +63,8 @@ public:
     }
     void push_front(t d){
         node*tmp=new node;
-        if(head==NULL){head=tmp;cur=tmp;tmp->next=NULL;tmp->prev=NULL;head->data=d;}
+        if(head==NULL)
+            first_element(d);
         else{
             tmp->next=head;
             tmp->prev=cur;
@@ -186,7 +192,6 @@ public:
 int main()
 {
     Linkedlist<int>li;
-
     li.display();
     cout<<li.get_size()<<" "<<li.summition()<<" "<<li.average()<<" "<<li.get_even()<<"\n";
     return 0;
