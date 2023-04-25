@@ -48,10 +48,10 @@ public:
         return size?false:true;
     }
     void push_back(t d){
-        node*tmp=new node;
         if(head==NULL)
             first_element(d);
         else{
+            node*tmp=new node;
             tmp->data=d;
             cur->next=tmp;
             tmp->prev=cur;
@@ -62,10 +62,10 @@ public:
         increment(d);
     }
     void push_front(t d){
-        node*tmp=new node;
         if(head==NULL)
             first_element(d);
         else{
+            node*tmp=new node;
             tmp->next=head;
             tmp->prev=cur;
             tmp->data=d;
@@ -192,6 +192,9 @@ public:
 int main()
 {
     Linkedlist<int>li;
+    li.push_front(3);
+    li.push_front(34);
+    li.push_front(53);
     li.display();
     cout<<li.get_size()<<" "<<li.summition()<<" "<<li.average()<<" "<<li.get_even()<<"\n";
     return 0;
