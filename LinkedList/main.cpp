@@ -17,7 +17,7 @@ private:
     void increment(t d){
         size++;
         even+=d&1?0:1;
-        sum+=d;avg=sum/size;
+        sum+=d;
         update_avg();
     }
     void decrement(t d){
