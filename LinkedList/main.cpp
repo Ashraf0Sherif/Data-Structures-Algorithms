@@ -11,21 +11,25 @@ private:
     node*head,*cur;
     int size,even;
     double sum,avg;
+    void update_avg(){
+        avg=sum/size;
+    }
     void increment(t d){
         size++;
         even+=d&1?0:1;
         sum+=d;avg=sum/size;
+        update_avg();
     }
     void decrement(t d){
         size--;
         even-=d&1?0:1;
-        sum-=d;avg=sum/size;
+        sum-=d;
+        update_avg();
     }
     void replacer(t r,t d){
-        even-=r&1?0:1;
-        even+=d&1?0:1;
-        sum-=r;sum+=d;
-        avg=sum/size;
+        decrement(r);
+        increment(d);
+        update_avg();
     }
     to_beginning(){
         head=NULL;
@@ -192,7 +196,6 @@ public:
 int main()
 {
     Linkedlist<int>li;
-
     li.display();
     cout<<li.get_size()<<" "<<li.summition()<<" "<<li.average()<<" "<<li.get_even()<<"\n";
     return 0;
