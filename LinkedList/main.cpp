@@ -29,7 +29,6 @@ private:
     void replacer(t r,t d){
         decrement(r);
         increment(d);
-        update_avg();
     }
     to_beginning(){
         delete(head);
