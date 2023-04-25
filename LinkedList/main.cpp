@@ -32,6 +32,7 @@ private:
         update_avg();
     }
     to_beginning(){
+        delete(head);
         head=NULL;
         cur=NULL;
         size=0;sum=0;avg=0;even=0;
