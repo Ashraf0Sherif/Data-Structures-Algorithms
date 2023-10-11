@@ -25,23 +25,20 @@ struct trie {
     }
 
     bool search(string s, int idx) {
-        if (this == nullptr)
-            return false;
-        if (idx == s.size() && this->isLeaf)
-            return true;
+        if (idx == s.size()){
+            return this->isLeaf;
+        }
         int realIdx{s[idx] - 'a'};
-        if (this->child[realIdx] == nullptr)
+        if(this->child[realIdx]==nullptr)
             return false;
         return this->child[realIdx]->search(s, idx + 1);
     }
 
     bool startsWith(string s, int idx) {
-        if (this == nullptr)
-            return false;
-        if (idx == s.size())
+        if(idx==s.size())
             return true;
         int realIdx{s[idx] - 'a'};
-        if (this->child[realIdx] == nullptr)
+        if(this->child[realIdx]==nullptr)
             return false;
         return this->child[realIdx]->startsWith(s, idx + 1);
     }
@@ -53,7 +50,8 @@ int main() {
     root->insert("abc", 0);
     root->insert("abcd", 0);
     root->insert("aa", 0);
-    cout << root->search("abcde", 0) << "\n";
-    cout << root->search("abcde", 0) << "\n";
+    cout << root->search("ab", 0) << "\n";
+    cout << root->search("ashraf", 0) << "\n";
+    cout << root->startsWith("ashr", 0) << "\n";
     return 0;
 }
