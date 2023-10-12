@@ -14,12 +14,12 @@ struct trie {
 
     void insert(string s, int idx) {
         if (idx == s.size())
-            this->isLeaf = true;
+            isLeaf = true;
         else {
             int realIdx{s[idx] - 'a'};
-            if (this->child[realIdx] == nullptr)
-                this->child[realIdx] = new trie();
-            this->child[realIdx]->insert(s, idx + 1);
+            if (child[realIdx] == nullptr)
+                child[realIdx] = new trie();
+            child[realIdx]->insert(s, idx + 1);
         }
     }
 
@@ -28,18 +28,18 @@ struct trie {
             return this->isLeaf;
         }
         int realIdx{s[idx] - 'a'};
-        if(this->child[realIdx]==nullptr)
+        if(child[realIdx]==nullptr)
             return false;
-        return this->child[realIdx]->search(s, idx + 1);
+        return child[realIdx]->search(s, idx + 1);
     }
 
     bool startsWith(string s, int idx) {
         if(idx==s.size())
             return true;
         int realIdx{s[idx] - 'a'};
-        if(this->child[realIdx]==nullptr)
+        if(child[realIdx]==nullptr)
             return false;
-        return this->child[realIdx]->startsWith(s, idx + 1);
+        return child[realIdx]->startsWith(s, idx + 1);
     }
 };
 
